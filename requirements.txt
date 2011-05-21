@@ -1,0 +1,2 @@
+django
+git+git://gitorious.org/~yohanboniface/chimere/djangoize.git@refactoring

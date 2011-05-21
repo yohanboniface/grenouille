@@ -1,0 +1,6 @@
+*.pyc
+*.swp
+*.bak
+*.mo
+local_settings.py
+medias/
