@@ -159,6 +159,7 @@ EPSG_PROJECTION = 900913
 EPSG_DISPLAY_PROJECTION = 4326
 EXTRA_URL = "extratra"
 BASE_URL = "ohmygod"
+SERVER_URL = "ohnoIcantbelieve"
 
 #########################################################################
 # Import settings from local_settings.py, if it exists.
