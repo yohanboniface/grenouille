@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Grenouille verte{% endblock %}</title>
+    {% block extra_head %}
+    {% endblock %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}grenouille/css/custom.css" />
+    <script type="text/javascript" src="{{ STATIC_URL }}chimere/js/jquery/jquery-1.4.4.min.js"></script>
+</head>
+<body {% block body_id %}{% endblock %} {% block body_class %}{% endblock %}>
+    {% block extrabody %}
+    {% endblock %}
+    {% block body %}
+        <div id="header">
+            {% block header %}
+            {% endblock %}
+        </div>
+        <div id="sidebar">
+            {% block sidebar %}
+            {% endblock %}
+        </div>
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div id="footer">
+            {% block footer %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+    <script type="text/javascript" src="{{ STATIC_URL }}grenouille/js/custom.js"></script>
+</body>
+</html>

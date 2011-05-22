@@ -49,7 +49,7 @@ MEDIA_URL = "/medias/"
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
+STATIC_ROOT = os.path.join(SITE_ROOT, 'nosetfornow')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -65,6 +65,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(SITE_ROOT, 'static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -72,7 +73,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -160,6 +161,18 @@ EPSG_DISPLAY_PROJECTION = 4326
 EXTRA_URL = "extratra"
 BASE_URL = "ohmygod"
 SERVER_URL = "ohnoIcantbelieve"
+PROJECT_NAME = "ohhisselasaucisse"
+SHARE_NETWORKS = (
+("Email", 'mailto:?subject=%(text)s&body=%(url)s',
+             MEDIA_URL + 'icons/email.png'),
+("Facebook", 'http://www.facebook.com/sharer.php?t=%(text)s&u=%(url)s',
+             MEDIA_URL + 'icons/facebook.png'),
+("Twitter", 'http://twitter.com/home?status=%(text)s %(url)s',
+             MEDIA_URL + 'icons/twitter.png'),
+("Identi.ca", 'http://identi.ca/index.php?action=newnotice&status_textarea=%(text)s %(url)s',
+             MEDIA_URL + 'icons/identica.png'),
+)
+
 
 #########################################################################
 # Import settings from local_settings.py, if it exists.

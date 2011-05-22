@@ -1,0 +1,132 @@
+/*
+    Custom CSS Rules
+*/
+
+/* Custom color to override */
+body {
+    background-color: #5891ba;
+}
+h2, #action li.selected, #welcome_button, .olControlPermalink {
+    background-color:#3d81a7;
+}
+a, legend, #categories li#display_submited, h3, .detail_footer a {
+    color: #3d81a7;
+}
+
+#action li.selected {
+  border-color: #3d81a7;
+}
+/*
+* Generics
+*/
+#footer {
+    bottom: 10px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+}
+#map {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    border: none;
+}
+/*
+* Menu
+*/
+
+#areas h2, #panel h2 {
+    border-radius: 0 0 4px 4px;
+    bottom: 0;
+    margin: 0;
+    position: absolute;
+    cursor: pointer;
+}
+
+#panel, #areas {
+    border-radius: 0 0 10px 10px;
+    top: 0;
+    border-top: none;
+    min-height: 20px;
+}
+
+#areas {
+    left: auto;
+    right: 335px;
+    height: auto;
+    bottom: auto;
+}
+#areas > ul {
+    height: auto;
+    overflow: auto;
+    padding: 10px 10px 20px;
+}
+
+#panel #categories {
+    margin: 0;
+    padding: 0;
+    width: 290px;
+    z-index: 5;
+    height: auto;
+    overflow: auto;
+    padding: 10px 10px 20px;
+}
+
+#categories > ul {
+    height: auto;
+    margin: 0;
+    overflow: auto;
+    padding: 0 10px;
+    width: 270px;
+}
+
+#welcome_button {
+    background-color:#3d81a7;
+    border: 1px solid #888888;
+    border-radius: 10px;
+    bottom: 250px;
+    display: block;
+    font-size: small;
+    font-weight: bold;
+    height: 20px;
+    left: auto;
+    position: absolute;
+    right: 750px;
+    text-align: center;
+    top: 5px;
+    width: 180px;
+    z-index: 4;
+    opacity: 0.8;
+}
+/* OpenLayers override */
+
+.olControlPermalink {
+    background-color: #3D81A7;
+    border: 1px solid #888888;
+    border-radius: 10px;
+    bottom: 222px;
+    display: block;
+    font-size: small;
+    font-weight: bold;
+    height: 20px;
+    right: 540px;
+    text-align: center;
+    top: 5px;
+    width: 180px;
+    left: auto;
+    opacity: 0.8;
+}
+.olControlScaleLine {
+  bottom: 10px;
+  left: 10px;
+}
+.olControlPanPanel div {
+    background-image: url("/static/grenouille/img/pan-panel.png");
+}
+
+.olControlZoomPanel div {
+    background-image: url("/static/grenouille/img/zoom-panel.png");
+}
+
