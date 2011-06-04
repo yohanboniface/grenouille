@@ -7,6 +7,8 @@
     {% block extra_head %}
     {% endblock %}
     <link rel="stylesheet" href="{{ STATIC_URL }}grenouille/css/custom.css" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0;">
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
 </head>
 <body {% block body_id %}{% endblock %} {% block body_class %}{% endblock %}>
     {% block extrabody %}
