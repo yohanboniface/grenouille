@@ -131,4 +131,22 @@ a, legend, #categories li#display_submited, h3, .detail_footer a {
 .olControlZoomPanel div {
     background-image: url("/static/grenouille/img/zoom-panel.png");
 }
+/*
+* Mobile
+*/
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 98%;
+    width: 100%;
+}
 
+@media only screen and (max-width: 600px) {
+    html, body {
+        height: 117% !important;
+    }
+}
+#map {
+    width: 100%;
+    height: 100%;
+}
