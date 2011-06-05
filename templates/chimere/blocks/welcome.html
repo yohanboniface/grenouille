@@ -1,0 +1,29 @@
+{% load i18n %}
+{% load sanitize %}
+<div id='welcome' {% if not display %}style='display:none'{%endif%}>
+    <h2>{% trans "News"%}</h2>
+    <div id='detail_content'>
+        {% include "chimere/blocks/welcome_message.html" %}
+        <div class='news'>
+            {% if news_lst %}
+                {% for news in news_lst %}
+                    <div class='info'>
+                        {% if news.title %}
+                            <h3>{{news.title}} &ndash; {{ news.date }}</h3>
+                            <p>{{news.content|safe}}</p>
+                       {% else %}
+                            <h3>{{news.name}} &ndash; {{ news.start_date }}{% if news.end_date %} - {{ news.end_date }}{% endif %}</h3>
+                            {% for property in news.getProperties %}
+                                <p id='{{news.propertymodel.getNamedId}}'>{{ property.value|sanitize:"p b i br hr strong em span:style a:href:target ul li ol h1 h2 h3 h4"|safe }}</p>
+                            {% endfor %}
+                            <p class='marker_link'><a href='{{ news.get_absolute_url }}'>{% trans "See it on the map"%}</a></p>
+                        {% endif %}
+                    </div>
+                {%endfor%}
+            {% endif %}
+            <div class='info'>
+            </div>
+        </div>
+    </div>
+    <div class='detail_footer'><a href='javascript:hide("welcome");'>{% trans "Close" %}</a></div>
+</div>

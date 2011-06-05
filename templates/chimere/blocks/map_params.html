@@ -1,0 +1,51 @@
+{% load i18n %}
+<script type="text/javascript">
+    var chimere_init_options = {};
+    chimere_init_options["map_layers"] = [new OpenLayers.Layer.OSM.Mapnik('Mapnik')];
+    chimere_init_options['permalink_label'] = '{%trans "Permalink"%}';
+    {% if dynamic_categories %}chimere_init_options['dynamic_categories'] = 1;{% endif %}
+    {% if default_area %}
+        chimere_init_options["default_area"] = new Array({{default_area.upper_left_corner.x}}, {{default_area.upper_left_corner.y}}, {{default_area.lower_right_corner.x}}, {{default_area.lower_right_corner.y}});
+    {% endif %}
+    {% if p_zoom %}chimere_init_options["zoom"] = {{ p_zoom }};{% endif %}
+    {% if p_lat %}chimere_init_options["lat"] = {{ p_lat }};{% endif %}
+    {% if p_lon %}chimere_init_options["lon"] = {{ p_lon }};{% endif %}
+    {% if p_display_submited %}chimere_init_options["display_submited"] = {{ p_display_submited }};{% endif %}
+     chimere_init_options["checked_categories"] = {% if p_checked_categories %}[{{p_checked_categories}}]{% else %} {{ CHIMERE_DEFAULT_CATEGORIES }}{% endif %};
+    var p_current_feature{% if p_current_feature %} = {{ p_current_feature }}{% endif %};
+    /* Chimere custom function */
+    var chimere_popup = function (evt, mark, settings)
+    {
+        if (settings.current_feature.popup) {
+            settings.current_feature.popup.toggle()
+        }
+        else {
+            settings.current_feature.data.popupContentHTML += '<a href="#" onclick="$(\'#map\').chimere(\'display_feature_detail\', ' + settings.current_feature.pk + ');">Voir plus</a>';
+            settings.current_feature.popup = settings.current_feature.createPopup();
+            map.addPopup(settings.current_feature.popup);
+        }
+        settings.current_popup = settings.current_feature.popup;
+    }
+    chimere_init_options["on_marker_click"] = chimere_popup;
+    var chimere_display_detail = function (data, settings)
+    {
+        var detail_css = {width: "25%", height: "99%", border: "none", top: 0, right: 0}
+        $("#detail").html(data).css(detail_css).show();
+        $("#map").css({width: "75%"});
+//        settings.map.updateSize();
+        $("#map").chimere("center_on_feature");
+        var close_button = $('<img src="' + STATIC_URL + 'grenouille/img/close_button.gif" alt="close" >').css({"float": "right", "cursor": "pointer"});
+        close_button.bind("click", function (e) { $("#map").css("width", "100%"); $("#detail").hide(); settings.map.updateSize(); })
+        $("#detail > h2").append(close_button);
+    }
+    chimere_init_options["display_feature_detail_fx"] = chimere_display_detail;
+    var chimere_hide_popup = function (evt, settings) {
+        if (settings.current_popup)
+        {
+            settings.current_popup.hide();
+        }
+    }
+    chimere_init_options["hide_popup_fx"] = chimere_hide_popup;
+    chimere_init_options["permalink_element"] = $("#permalink").get(0);
+</script>
+

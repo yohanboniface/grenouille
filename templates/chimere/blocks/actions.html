@@ -1,0 +1,17 @@
+{% for action, subactions in actions %}
+    <li{% ifequal action.id action_selected.0 %} class='selected'{% endifequal %}>
+        <a href='{{extra_url}}{{ action.path }}' onclick='saveExtent();'>{{ action.label }}</a>
+        {% ifequal action.id action_selected.0 %}
+            {% if subactions %}
+                <ul>
+                {% for subaction in subactions %}
+                    <li{% ifequal subaction.id action_selected.1 %} class='selected'{% endifequal %}>
+                    <a href='{{extra_url}}{{ subaction.path }}' onclick='saveExtent();'>{{ subaction.label }}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endifequal %}
+    </li>
+{% endfor %}
+

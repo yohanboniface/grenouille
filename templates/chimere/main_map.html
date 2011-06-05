@@ -1,0 +1,36 @@
+{% extends "chimere/base.html" %}
+{% load i18n unlocalize_point chimere_tags %}
+{% block header %}
+<div id="plus_menu">
+    <h2>Plus</h2>
+    <ul>
+        <li><div id="permalink"></div></li>
+        <li><a href='javascript:show("welcome");'>Dernières nouvelles</a></li>
+            {% include "chimere/blocks/actions.html" %}
+    </ul>
+</div>
+{% endblock %}
+{% block sidebar %}
+    <div id='detail'></div>
+    {% display_news news_visible %}
+{% endblock %}
+{% block content %}
+    <div id='map'>
+        <div id='panel'>
+            <h2>{% trans "Topics"%}</h2>
+            <form method='post' name='frm_categories' id='frm_categories'>
+                <div id='categories'>
+                <!-- Categories are displayed in JS -->
+                </div>
+            </form>
+        </div>
+        {% if areas_visible %}
+            {% display_areas %}
+        {% endif %}
+        <div id='category_detail'></div>
+    </div>
+    {% map_params %}
+    <script type='text/javascript'><!--
+        $("#map").chimere(chimere_init_options);
+    // --></script>
+{% endblock %}

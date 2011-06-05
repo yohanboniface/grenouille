@@ -37,7 +37,7 @@ a, legend, #categories li#display_submited, h3, .detail_footer a {
 * Menu
 */
 
-#areas h2, #panel h2 {
+#areas h2, #panel h2, #plus_menu h2 {
     border-radius: 0 0 4px 4px;
     bottom: 0;
     margin: 0;
@@ -45,11 +45,35 @@ a, legend, #categories li#display_submited, h3, .detail_footer a {
     cursor: pointer;
 }
 
-#panel, #areas {
+#plus_menu {
+    position: absolute;
+    right: 550px;
+    opacity: 0.8;
+    background-color: #fff;
+    width: 200px;
+    border: 1px solid #888888;
+}
+
+#panel, #areas, #plus_menu {
     border-radius: 0 0 10px 10px;
     top: 0;
     border-top: none;
     min-height: 20px;
+    z-index: 1000;
+}
+
+#plus_menu li {
+    list-style: none outside none;
+}
+
+#plus_menu > ul {
+    display: none;
+    padding: 0 10px 10px;
+}
+
+#plus_menu a {
+    text-decoration: none;
+    color: #000;
 }
 
 #areas {
@@ -101,6 +125,17 @@ a, legend, #categories li#display_submited, h3, .detail_footer a {
     width: 180px;
     z-index: 4;
     opacity: 0.8;
+}
+/*
+* Detail div
+*/
+#detail {
+    width: 25%;
+    border: none;
+    height: 98%;
+    top: 0;
+    right: 0;
+    border-radius: 0;
 }
 /* OpenLayers override */
 
