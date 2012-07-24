@@ -1,7 +1,11 @@
 {% load i18n %}
 <script type="text/javascript">
     var chimere_init_options = {};
-    chimere_init_options["map_layers"] = [new OpenLayers.Layer.OSM.Mapnik('Mapnik')];
+    var landscapeattrib='<b>Gravitystorm Landscape Map</b> - an experimental new style<br />More details coming soon!<br /><br />';
+    chimere_init_options["map_layers"] = [
+        new OpenLayers.Layer.OSM("Landscape",["http://a.tile3.opencyclemap.org/landscape/${z}/${x}/${y}.png","http://b.tile3.opencyclemap.org/landscape/${z}/${x}/${y}.png","http://c.tile3.opencyclemap.org/landscape/${z}/${x}/${y}.png"],{displayOutsideMaxExtent:true,attribution:landscapeattrib,transitionEffect:'resize'}),
+        new OpenLayers.Layer.OSM.Mapnik('Mapnik')
+        ];
     chimere_init_options['permalink_label'] = '{%trans "Permalink"%}';
     {% if dynamic_categories %}chimere_init_options['dynamic_categories'] = 1;{% endif %}
     {% if default_area %}
